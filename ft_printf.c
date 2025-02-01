@@ -14,40 +14,39 @@
 
 int	main(void)
 {
-	ft_printf("This is Lar");
+	ft_printf("This is Lar, %s, %c", "Puppy", 'c');
 	return (0);
 }
 
-// 1. The printf function will write each character of the intial string, one by
-// one, until it finds a %.
+int	ft_printf(const char *string, ...)
+{
+	char		*string_copy;
+	int		nbr_of_inputs;
+	size_t		i;
+	va_list		arg_list;
 
-// 2. When it finds a %, it will look at the element in the next index/position.
-// It will find the character that will define the type of the first variable
-// argument.
-
-// 3. Depending on what it finds, it will call a method that will display the
-// argument of the particular type at output.
-// -> if there is a "s" after the %, then you will need a function that displays
-// strings.
-// -> if there is a "d" after the %, then you will need a function that displays
-// numbers. etc.
-
-// 4. Once the first variable argument has been written, you go back to step 1,
-// until the string is finished (aka, until you find a null character (\0)).
-
-int ft_printf(const char *string, ...) {
-  int nbr_of_inputs;
-  size_t i;
-
-  nbr_of_inputs = 0;
-  i = 0;
-  while (string[i]) {
-    if (string[i] == '%')
-      // then look in the va_list for the next argument and run the function
-      // that will print that argument
-      else {
-        ft_putchar(string[i++], 1);
-      }
-  }
-  return (nbr_of_inputs);
+	string_copy = string;
+	nbr_of_inputs = 0;
+	i = 0;
+	va_start(arg_list, string_copy);
+	while (string_copy[i])
+	{
+    		if (string_copy[i] != '%')
+			ft_putchar(string_copy[i++], 1);
+		else if (string_copy[i] == '%')
+		{
+			nbr_of_inputs++;
+			i++;
+			if (string_copy[i] == c)
+				ft_putchar(va_arg(arg_list, char), 1);
+			else if (string_copy[i] == s)
+				while (va_arg(arg_list, char *))[j], 1)
+					ft_putchar(va_arg(arg_list, char *)[j++], 1);
+			i++;
+		}
+	}
+}
+	// then look in the va_list for the next argument and run the function
+	// that will print that argument
+	return (nbr_of_inputs);
 }
