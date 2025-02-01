@@ -20,13 +20,12 @@ int	main(void)
 
 int	ft_printf(const char *string, ...)
 {
-	char		*string_copy;
 	char		char_placeholder;
+	char		*string_placeholder;
 	int		nbr_of_inputs;
 	size_t		i;
 	size_t		j;
 	va_list		arg_list;
-	char		*string_placeholder;
 
 	nbr_of_inputs = 0;
 	i = 0;
@@ -53,6 +52,10 @@ int	ft_printf(const char *string, ...)
 					ft_putchar_fd(string_placeholder[j++], 1);
 				i++;
 				j = 0;
+			}
+			else if (string[i] == 'p')
+			{
+				
 			}
 		}
 	}
