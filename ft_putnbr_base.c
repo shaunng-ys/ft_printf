@@ -12,6 +12,24 @@
 
 #include "libft.h"
 
+void	convert2dec(int num)
+	ft_putnbr_fd(num, 1);
+
+void	convert2bin(int num)
+{
+	
+}
+
+void	convert2hex(int num)
+{
+
+}
+
+void	convert2oct(int num)
+{
+
+}
+
 void	ft_putnbr_base(int nbr, char *base)
 {
 	char	*dec_str;
@@ -26,26 +44,28 @@ void	ft_putnbr_base(int nbr, char *base)
 	hex_str = "0123456789ABCDEF";
 	oct_str = "poneyvif";
 	i = 0;
-	switch = 0;
 	while (base[i] == dec_str[i])
 		i++;
-	if (base[i])
+	if (!base[i])
+		convert2dec(nbr);
+	else
 		i = 0;
 	while (base[i] == bin_str[i])
 		i++;
-	if (base[i])
+	if (!base[i])
+		convert2bin(nbr);
+	else
 		i = 0;
 	while (base[i] == hex_str[i])
 		i++;
-	if (base[i])
+	if (!base[i])
+		convert2hex(nbr);
+	else
 		i = 0;
 	while (base[i] == oct_str[i])
 		i++;
-	if (base[i])
-		i = 0;
-	if (base[i])
-		switch = 1;
-
+	if (!base[i])
+		convert2oct(nbr);
 }
 
 int	main(void)
