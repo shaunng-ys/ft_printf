@@ -12,71 +12,30 @@
 
 #include "libft.h"
 
-void	convert2dec(int num)
-	ft_putnbr_fd(num, 1);
-
-void	convert2bin(int num)
-{
-	
-}
-
-void	convert2hex(int num)
-{
-
-}
-
-void	convert2oct(int num)
-{
-
-}
-
 void	ft_putnbr_base(int nbr, char *base)
 {
-	char	*dec_str;
-	char	*bin_str;
-	char	*hex_str;
-	char	*oct_str;
-	size_t	i;
-	size_t	switch;
+	size_t	counter;
+	int	num;
 
-	dec_str = "0123456789";
-	bin_str = "01";
-	hex_str = "0123456789ABCDEF";
-	oct_str = "poneyvif";
-	i = 0;
-	while (base[i] == dec_str[i])
-		i++;
-	if (!base[i])
-		convert2dec(nbr);
-	else
-		i = 0;
-	while (base[i] == bin_str[i])
-		i++;
-	if (!base[i])
-		convert2bin(nbr);
-	else
-		i = 0;
-	while (base[i] == hex_str[i])
-		i++;
-	if (!base[i])
-		convert2hex(nbr);
-	else
-		i = 0;
-	while (base[i] == oct_str[i])
-		i++;
-	if (!base[i])
-		convert2oct(nbr);
+	num = nbr;
+	counter = ft_strlen(base);
+	if (num > 0)
+	{
+		ft_putnbr_base(num / counter, base);
+		ft_putchar_fd(num % counter + 48, 1);
+	}
 }
-
+/*
 int	main(void)
 {
 	//This is for decimal
-	ft_putnbr_base(40, "0123456789");
+	//ft_putnbr_base(40, "0123456789");
 	//This is for binary
-	ft_putnbr_base(40, "01");
+	//ft_putnbr_base(40, "01");
 	//This is for hexadecimal
 	ft_putnbr_base(40, "0123456789ABCDEF");
 	//This is for octal
-	ft_putnbr_base(40, "poneyvif");
+	//ft_putnbr_base(40, "poneyvif");
 	return (0);
 }
+*/

@@ -14,7 +14,11 @@
 
 int	main(void)
 {
-	ft_printf("This is Lar, %s, %c", "Puppy", 'c');
+	char		c = 'a';
+	void		*ptr = &c;
+	unsigned int	forty = 40;
+	ft_printf("This is Lar, %s, %c, %p, %d, %i, %x, %X\n", "Puppy", 'c', ptr, 123, 123, forty, forty);
+	printf("This is Lar, %s, %c, %p, %d, %i, %x, %X\n", "Puppy", 'c', ptr, 123, 123, forty, forty);
 	return (0);
 }
 
@@ -22,6 +26,7 @@ int	ft_printf(const char *string, ...)
 {
 	char		char_placeholder;
 	char		*string_placeholder;
+	unsigned int	hex_placeholder;
 	int		nbr_of_inputs;
 	size_t		i;
 	size_t		j;
@@ -53,13 +58,22 @@ int	ft_printf(const char *string, ...)
 				i++;
 				j = 0;
 			}
-			else if (string[i] == 'p')
+			else if (string[i] == 'p' || string[i] == 'X')
 			{
-				
+				hex_placeholder = va_arg(arg_list, unsigned int);
+				ft_putnbr_base(hex_placeholder, "0123456789ABCDEF");
 			}
+			else if (string[i] == 'd' || string[i] == 'i')
+				ft_itoa(va_arg(arg_list, int));
+			//else if (string[i] == 'u')
+			else if (string[i] == 'x')
+	    		{
+				hex_placeholder = va_arg(arg_list, unsigned int);
+				ft_putnbr_base(hex_placeholder, "0123456789abcdef");
+			}
+			else if (string[i] == '%')
+				ft_putchar_fd('%', 1);
 		}
 	}
-	// then look in the va_list for the next argument and run the function
-	// that will print that argument
 	return (nbr_of_inputs);
 }
