@@ -12,19 +12,22 @@
 
 #include "libft.h"
 
-void	ft_putnbr_base(int nbr, char *base)
+void	ft_putnbr_base(unsigned long nbr, char *base)
 {
 	size_t	counter;
-	int	num;
+	unsigned long	num;
 
+	//printf("test: %lX\n", nbr);
 	num = nbr;
 	counter = ft_strlen(base);
 	if (num > 0)
 	{
 		ft_putnbr_base(num / counter, base);
-		ft_putchar_fd(num % counter + 48, 1);
+		//ft_putchar_fd(num % counter + 48, 1);
+		ft_putchar_fd((base[num % counter]), 1);
 	}
 }
+
 /*
 int	main(void)
 {

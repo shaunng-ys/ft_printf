@@ -17,9 +17,10 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdint.h>
 
 int		ft_printf(const char *format, ...);
-void		ft_putnbr_base(int nbr, char *base);
+void		ft_putnbr_base(unsigned long nbr, char *base);
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
 int		ft_isalnum(int c);
