@@ -86,16 +86,16 @@ int	ft_printf(const char *string, ...)
 				//j = 0;
 			}	
 			//else if (string[i] == 'u')
-			else if (string[i] == 'x')
+			else if (string[i++] == 'x')
 	    		{
 				//hex_placeholder = va_arg(arg_list, unsigned int);
 				ft_putnbr_base(va_arg(arg_list, unsigned int), "0123456789abcdef");
-				i++;
+				//i++;
 			}
-			else if (string[i] == '%')
+			else if (string[i++] == '%')
 			{
 				ft_putchar_fd('%', 1);
-				i++;
+				//i++;
 			}
 		}
 	}
