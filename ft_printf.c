@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <limits.h>
 
 int	main(void)
 {
@@ -26,9 +25,9 @@ int	main(void)
 
 int	ft_printf(const char *string, ...)
 {
-	char		char_placeholder;
+	//char		char_placeholder;
 	char		*string_placeholder;
-	unsigned int	hex_placeholder;
+	//unsigned int	hex_placeholder;
 	int		nbr_of_inputs;
 	size_t		i;
 	size_t		j;
@@ -48,8 +47,8 @@ int	ft_printf(const char *string, ...)
 			i++;
 			if (string[i] == 'c')
 			{
-				char_placeholder = va_arg(arg_list, int);
-				ft_putchar_fd(char_placeholder, 1);
+				//char_placeholder = va_arg(arg_list, int);
+				ft_putchar_fd(va_arg(arg_list, int), 1);
 				i++;
 			}
 			else if (string[i] == 's')
@@ -73,23 +72,24 @@ int	ft_printf(const char *string, ...)
 			}
 			else if (string[i] == 'X')
 			{
-				hex_placeholder = va_arg(arg_list, unsigned int);
-				ft_putnbr_base(hex_placeholder, "0123456789ABCDEF");
+				//hex_placeholder = va_arg(arg_list, unsigned int);
+				ft_putnbr_base(va_arg(arg_list, unsigned int), "0123456789ABCDEF");
 				i++;
 			}
 			else if (string[i] == 'd' || string[i] == 'i')
 			{
-				string_placeholder = ft_itoa(va_arg(arg_list, int));
-				while (string_placeholder[j])
-					ft_putchar_fd(string_placeholder[j++], 1);
+				//string_placeholder = ft_itoa(va_arg(arg_list, int));
+				ft_putnbr_base(va_arg(arg_list, int), "0123456789");
+				//while (string_placeholder[j])
+				//	ft_putchar_fd(string_placeholder[j++], 1);
 				i++;
-				j = 0;
+				//j = 0;
 			}	
 			//else if (string[i] == 'u')
 			else if (string[i] == 'x')
 	    		{
-				hex_placeholder = va_arg(arg_list, unsigned int);
-				ft_putnbr_base(hex_placeholder, "0123456789abcdef");
+				//hex_placeholder = va_arg(arg_list, unsigned int);
+				ft_putnbr_base(va_arg(arg_list, unsigned int), "0123456789abcdef");
 				i++;
 			}
 			else if (string[i] == '%')
