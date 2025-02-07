@@ -20,9 +20,9 @@
 # include <stdint.h>
 
 int		ft_printf(const char *format, ...);
-void	ft_printf_util1(const char *string, size_t index, va_list args);
-void	ft_printf_util2(const char *string, size_t index, va_list args);
-void		ft_putnbr_base(unsigned long nbr, char *base);
+void	ft_printf_util1(const char *string, size_t index, va_list *args);
+void	ft_printf_util2(const char *string, size_t index, va_list *args);
+void	ft_putnbr_base(unsigned long nbr, char *base);
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
 int		ft_isalnum(int c);
@@ -59,4 +59,3 @@ char	**ft_split(char const *s, char c);
 char	*ft_strjoin(char const *s1, char const *s2);
 
 #endif
-

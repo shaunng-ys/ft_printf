@@ -12,25 +12,27 @@
 
 #include "libft.h"
 
-void	ft_printf_util1(const char *string, size_t index, va_list args)
+void	ft_printf_util1(const char *string, size_t index, va_list *args)
 {
 	char		*string_placeholder;
+	char		*hex_low;
 	size_t		j;
 
+	hex_low = "0123456789abcdef";
 	j = 0;
 	if (string[index] == 'c')
-		ft_putchar_fd(va_arg(args, int), 1);
+		ft_putchar_fd(va_arg(*args, int), 1);
 	else if (string[index] == 's')
 	{
-		string_placeholder = va_arg(args, char *);
+		string_placeholder = va_arg(*args, char *);
 		while (string_placeholder[j])
 			ft_putchar_fd(string_placeholder[j++], 1);
 	}
 	else if (string[index] == 'u')
-		ft_putnbr_base(va_arg(args, unsigned int), "0123456789");
+		ft_putnbr_base(va_arg(*args, unsigned int), "0123456789");
 	else if (string[index] == 'p')
 	{
 		write(1, "0x", 2);
-		ft_putnbr_base(((unsigned long)va_arg(args, void *)), "0123456789abcdef");
+		ft_putnbr_base(((unsigned long)va_arg(*args, void *)), hex_low);
 	}
 }
