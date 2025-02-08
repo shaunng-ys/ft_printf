@@ -19,8 +19,10 @@
 // 	ft_putchar_fd('c', fd);
 // 	return (0);
 // }
-void	ft_putchar_fd(char c, int fd)
+int	ft_putchar_fd(char c, int fd)
 {
 	//printf("%p\n", &c);
 	write(fd, &c, 1);
+	//n++;
+	return (1);
 }
