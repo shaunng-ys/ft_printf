@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdint.h>
+# define STRNULL "(null)"
 
 int		ft_printf(const char *format, ...);
 int		ft_printf_util1(const char *string, size_t index, va_list *args, int n);

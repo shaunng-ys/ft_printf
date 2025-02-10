@@ -19,6 +19,7 @@ int	ft_printf_util1(const char *string, size_t index, va_list *args, int n)
 	size_t		j;
 	int		a;
 	int		*d = &a;
+	int		i = 0;
 
 	hex_low = "0123456789abcdef";
 	j = 0;
@@ -29,7 +30,15 @@ int	ft_printf_util1(const char *string, size_t index, va_list *args, int n)
 		//n++;
 	}
 	else if (string[index] == 's')
-	{
+	{	
+		/*
+		if (va_arg(*args, char *) == NULL)
+		{
+			while (STRNULL[i])
+				ft_putchar_fd(STRNULL[i++], 1);
+			return (i);
+		}
+		*/
 		string_placeholder = va_arg(*args, char *);
 		while (string_placeholder[j])
 		{
