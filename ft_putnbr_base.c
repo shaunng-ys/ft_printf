@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+
 /*
 //void	ft_putnbr_base(unsigned long nbr, char *base)
 int	ft_putnbr_base(unsigned long nbr, char *base, int *digit_count)
@@ -58,7 +59,7 @@ int    main(void)
     //This is for hexadecimal
     int n = 0;
     int *digit_counter = &n;
-    printf("\n%d\n", ft_putnbr_base(40350, "0123456789ABCDEF", digit_counter));
+    ft_putnbr_base(42, "0123456789ABCDEF", digit_counter));
     //This is for octal
     //ft_putnbr_base(40, "poneyvif");
     return (0);
@@ -82,7 +83,20 @@ int    ft_putnbr_base(unsigned long nbr, char *base, int *digit_count)
     num = nbr;
     //add = 0;
     //a = a + a;
-    counter = strlen(base);
+    counter = ft_strlen(base);
+	/*
+	if (num == 0)
+	{
+		ft_putchar_fd(base[num], 1);
+		(*digit_count)++;
+	}
+	if (num == 0 && *digit_count == 0)
+	{
+		ft_putchar_fd(base[0], 1);
+		(*digit_count)++;
+		return (*digit_count);
+	}
+	*/
     if (num > 0)
     {
         //add++;

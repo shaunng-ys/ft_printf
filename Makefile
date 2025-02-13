@@ -43,9 +43,9 @@ RM = rm -rf
 
 NAME = libftprintf.a
 
-SRC = ft_strlen.c ft_putchar_fd.c ft_printf.c ft_putnbr_base.c ft_printf_util1.c ft_printf_util2.c
+SRC = ft_strlen.c ft_putchar_fd.c ft_printf.c ft_itoa.c ft_putnbr_base.c ft_printf_util1.c ft_printf_util2.c
 
-OBJS = ft_strlen.o ft_putchar_fd.o ft_printf.o ft_putnbr_base.o ft_printf_util1.o ft_printf_util2.o
+OBJS = ft_strlen.o ft_putchar_fd.o ft_printf.o ft_itoa.o ft_putnbr_base.o ft_printf_util1.o ft_printf_util2.o
 
 
 all: $(NAME)
