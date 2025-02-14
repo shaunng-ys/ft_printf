@@ -50,6 +50,26 @@ int	main(void)
 	return (0);
 }
 
+
+size_t	itr(unsigned long nbr, char *base)
+{
+	size_t	n;
+	size_t	placeholder;
+	size_t	base_nbr;
+
+	n = 0;
+	placeholder = nbr;
+	base_nbr = ft_strlen(base);
+	if (placeholder == 0)
+		n++;
+	while (placeholder > 0)
+	{
+		placeholder = placeholder / base_nbr;
+		n++;
+	}
+	return (n);
+}
+
 int    main(void)
 {
     //This is for decimal
@@ -59,52 +79,53 @@ int    main(void)
     //This is for hexadecimal
     int n = 0;
     int *digit_counter = &n;
-    ft_putnbr_base(42, "0123456789ABCDEF", digit_counter));
+	size_t cycles = iterations(9827, "0123456789ABCDEF");
+	printf("This is the number of iterations: %zu\n", cycles);
+    ft_putnbr_base(9287, "0123456789ABCDEF", digit_counter, cycles);
     //This is for octal
     //ft_putnbr_base(40, "poneyvif");
     return (0);
 }
 
-int    ft_putchar(char c, int fd)
+int    ft_putchar_fd(char c, int fd)
 {
     //printf("%p\n", &c);
     write(fd, &c, 1);
     //n++;
     return (1);
 }
+size_t	iterations(unsigned long nbr, char *base)
+{
+	size_t	n;
+	size_t	placeholder;
+	size_t	base_nbr;
+
+	n = 0;
+	placeholder = nbr;
+	base_nbr = ft_strlen(base);
+	while (placeholder > 0)
+	{
+		placeholder = placeholder / base_nbr;
+		n++;
+	}
+	printf("This is n at the moment: %zu\n", n);
+	return (n);
+}
 */
 
-int    ft_putnbr_base(unsigned long nbr, char *base, int *digit_count)
+int    ft_putnbr_base(unsigned long nbr, char *base, int *digit_count, size_t itr)
 {
-    size_t    counter;
-    unsigned long    num;
-    //int    add;
+	size_t    counter;
+	unsigned long    num;
 
-    num = nbr;
-    //add = 0;
-    //a = a + a;
-    counter = ft_strlen(base);
-	/*
-	if (num == 0)
-	{
-		ft_putchar_fd(base[num], 1);
+	num = nbr;
+	counter = ft_strlen(base);
+	if (itr > 0)
+    	{
+		ft_putnbr_base(num / counter, base, digit_count, --itr);
 		(*digit_count)++;
+		//iterations--;
+		ft_putchar_fd((base[num % counter]), 1);
 	}
-	if (num == 0 && *digit_count == 0)
-	{
-		ft_putchar_fd(base[0], 1);
-		(*digit_count)++;
-		return (*digit_count);
-	}
-	*/
-    if (num > 0)
-    {
-        //add++;
-        ft_putnbr_base(num / counter, base, digit_count);
-        //add = add + ft_putchar_fd(base[num % counter], 1);
-        (*digit_count)++;
-        ft_putchar_fd((base[num % counter]), 1);
-        //n++;
-    }
-    return ((*digit_count));
+	return ((*digit_count));
 }

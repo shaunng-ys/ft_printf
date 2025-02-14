@@ -23,7 +23,8 @@
 int		ft_printf(const char *format, ...);
 int		ft_printf_util1(const char *string, size_t index, va_list *args, int n);
 int		ft_printf_util2(const char *string, size_t index, va_list *args, int n);
-int		ft_putnbr_base(unsigned long nbr, char *base, int *d);
+size_t	itr(unsigned long nbr, char *base);
+int		ft_putnbr_base(unsigned long nbr, char *base, int *d, size_t itr);
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
 int		ft_isalnum(int c);

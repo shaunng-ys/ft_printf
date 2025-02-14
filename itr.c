@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   itr.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shaun <sng@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/07 11:34:00 by shaun             #+#    #+#             */
-/*   Updated: 2024/11/07 16:00:54 by shaun             ###   ########kl       */
+/*   Created: 2025/02/14 17:35:10 by shaun             #+#    #+#             */
+/*   Updated: 2025/02/14 17:35:14 by shaun             ###   ########kl       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+size_t	itr(unsigned long nbr, char *base)
 {
-	size_t	nbr_of_char;
-	int		i;
+	size_t	n;
+	size_t	placeholder;
+	size_t	base_nbr;
 
-	nbr_of_char = 0;
-	i = 0;
-	while (s[i])
+	n = 0;
+	placeholder = nbr;
+	base_nbr = ft_strlen(base);
+	if (placeholder == 0)
+		n++;
+	while (placeholder > 0)
 	{
-		i++;
-		nbr_of_char++;
+		placeholder = placeholder / base_nbr;
+		n++;
 	}
-	return (nbr_of_char);
+	return (n);
 }
+

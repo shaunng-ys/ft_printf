@@ -15,44 +15,36 @@
 
 int	ft_printf_util2(const char *string, size_t index, va_list *args, int n)
 {
-	//int	int_placeholder;
 	char	*string_placeholder;
-	int	a;
 	int	*d;
 	int	i;
+	unsigned int	pl;
+	size_t	cyc;
 
-	a = 0;
-	d = &a;
 	i = 0;
+	d = &i;
 	if (string[index] == 'd' || string[index] == 'i')
 	{
 		string_placeholder = ft_itoa(va_arg(*args, int));
 		while (string_placeholder[i])
 			n = n + ft_putchar_fd(string_placeholder[i++], 1);
 		free(string_placeholder);
-		/*
-		int_placeholder = va_arg(*args, int);
-		if (int_placeholder < 0)
-		{
-			n = n + ft_putchar_fd('-', 1);
-			//n++;
-			int_placeholder = int_placeholder * -1;
-		}
-		n = n + ft_putnbr_base(int_placeholder, "0123456789", d);
-		*/
-		
-	
 	}
 	else if (string[index] == 'x')
-		n = n + ft_putnbr_base(va_arg(*args, unsigned int), "0123456789abcdef", d);
-	else if (string[index] == 'X')
-		n = n + ft_putnbr_base(va_arg(*args, unsigned int), "0123456789ABCDEF", d);
-	else if (string[index] == '%')
 	{
-		n = n + ft_putchar_fd('%', 1);
-		//n++;
+		pl = va_arg(*args, unsigned int);
+		cyc = itr(pl, "0123456789abcdef");
+		n = n + ft_putnbr_base(pl, "0123456789abcdef", d, cyc);
+		//n = n + ft_putnbr_base(va_arg(*args, unsigned int), "0123456789abcdef", d);
 	}
-	//printf("This is the output of util2: %d\n", n);
+	else if (string[index] == 'X')
+	{
+		pl = va_arg(*args, unsigned int);
+		cyc = itr(pl, "0123456789ABCDEF");
+		n = n + ft_putnbr_base(pl, "0123456789ABCDEF", d, cyc);
+	}
+	else if (string[index] == '%')
+		n = n + ft_putchar_fd('%', 1);
 	return (n);
 }
 
