@@ -17,8 +17,8 @@ int	ft_printf_util1(const char *string, size_t index, va_list *args, int n)
 	char		*string_placeholder;
 	char		*hex_low;
 	size_t		j;
-	int		a;
-	int		*d = &a;
+	int			a;
+	int			*d;
 	unsigned int	pl;
 	unsigned long	ul;
 	size_t		cyc;
@@ -26,6 +26,7 @@ int	ft_printf_util1(const char *string, size_t index, va_list *args, int n)
 	hex_low = "0123456789abcdef";
 	j = 0;
 	a = 0;
+	d = &a;
 	if (string[index] == 'c')
 		n = n + ft_putchar_fd(va_arg(*args, int), 1);
 	else if (string[index] == 's')

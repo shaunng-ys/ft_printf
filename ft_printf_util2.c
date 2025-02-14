@@ -12,12 +12,11 @@
 
 #include "libft.h"
 
-
 int	ft_printf_util2(const char *string, size_t index, va_list *args, int n)
 {
 	char	*string_placeholder;
-	int	*d;
-	int	i;
+	int		*d;
+	int		i;
 	unsigned int	pl;
 	size_t	cyc;
 
@@ -35,7 +34,6 @@ int	ft_printf_util2(const char *string, size_t index, va_list *args, int n)
 		pl = va_arg(*args, unsigned int);
 		cyc = itr(pl, "0123456789abcdef");
 		n = n + ft_putnbr_base(pl, "0123456789abcdef", d, cyc);
-		//n = n + ft_putnbr_base(va_arg(*args, unsigned int), "0123456789abcdef", d);
 	}
 	else if (string[index] == 'X')
 	{
