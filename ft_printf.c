@@ -29,6 +29,7 @@ int	ft_printf(const char *string, ...)
 		{
 			n = ft_printf_util1(string, i, &arg_list, n);
 			n = ft_printf_util2(string, i, &arg_list, n);
+			n = ft_printf_util3(string, i, &arg_list, n);
 			i++;
 		}
 	}

@@ -14,14 +14,13 @@
 
 int	ft_printf_util2(const char *string, size_t index, va_list *args, int n)
 {
-	char	*string_placeholder;
-	int		*d;
-	int		i;
-	unsigned int	pl;
-	size_t	cyc;
+	char			*string_placeholder;
+	int				i;
+	unsigned long	ul;
+	size_t			cyc;
 
 	i = 0;
-	d = &i;
+	string_placeholder = "0123456789abcdef";
 	if (string[index] == 'd' || string[index] == 'i')
 	{
 		string_placeholder = ft_itoa(va_arg(*args, int));
@@ -29,20 +28,15 @@ int	ft_printf_util2(const char *string, size_t index, va_list *args, int n)
 			n = n + ft_putchar_fd(string_placeholder[i++], 1);
 		free(string_placeholder);
 	}
-	else if (string[index] == 'x')
+	else if (string[index] == 'p')
 	{
-		pl = va_arg(*args, unsigned int);
-		cyc = itr(pl, "0123456789abcdef");
-		n = n + ft_putnbr_base(pl, "0123456789abcdef", d, cyc);
-	}
-	else if (string[index] == 'X')
-	{
-		pl = va_arg(*args, unsigned int);
-		cyc = itr(pl, "0123456789ABCDEF");
-		n = n + ft_putnbr_base(pl, "0123456789ABCDEF", d, cyc);
+		write(1, "0x", 2);
+		n = n + 2;
+		ul = (unsigned long)va_arg(*args, void *);
+		cyc = itr(ul, string_placeholder);
+		n = n + ft_putnbr_base(ul, string_placeholder, &i, cyc);
 	}
 	else if (string[index] == '%')
 		n = n + ft_putchar_fd('%', 1);
 	return (n);
 }
-

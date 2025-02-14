@@ -14,19 +14,10 @@
 
 int	ft_printf_util1(const char *string, size_t index, va_list *args, int n)
 {
-	char		*string_placeholder;
-	char		*hex_low;
-	size_t		j;
-	int			a;
-	int			*d;
-	unsigned int	pl;
-	unsigned long	ul;
-	size_t		cyc;
+	char				*string_placeholder;
+	size_t				j;
 
-	hex_low = "0123456789abcdef";
 	j = 0;
-	a = 0;
-	d = &a;
 	if (string[index] == 'c')
 		n = n + ft_putchar_fd(va_arg(*args, int), 1);
 	else if (string[index] == 's')
@@ -36,20 +27,6 @@ int	ft_printf_util1(const char *string, size_t index, va_list *args, int n)
 			return (n + write(1, "(null)", 6));
 		while (string_placeholder[j])
 			n = n + ft_putchar_fd(string_placeholder[j++], 1);
-	}
-	else if (string[index] == 'u')
-	{
-		pl = va_arg(*args, unsigned int);
-		cyc = itr(pl, "0123456789");
-		n = n + ft_putnbr_base(pl, "0123456789", d, cyc);
-	}
-	else if (string[index] == 'p')
-	{
-		write(1, "0x", 2);
-		n = n + 2;
-		ul = (unsigned long)va_arg(*args, void *);
-		cyc = itr(ul, hex_low);
-		n = n + ft_putnbr_base(ul, hex_low, d, cyc);
 	}
 	return (n);
 }

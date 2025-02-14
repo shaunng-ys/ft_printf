@@ -30,4 +30,3 @@ size_t	itr(unsigned long nbr, char *base)
 	}
 	return (n);
 }
-

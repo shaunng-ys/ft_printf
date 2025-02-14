@@ -113,18 +113,17 @@ size_t	iterations(unsigned long nbr, char *base)
 }
 */
 
-int    ft_putnbr_base(unsigned long nbr, char *base, int *digit_count, size_t itr)
+int	ft_putnbr_base(unsigned long nbr, char *base, int *digit_count, size_t itr)
 {
-	size_t    counter;
-	unsigned long    num;
+	size_t			counter;
+	unsigned long	num;
 
 	num = nbr;
 	counter = ft_strlen(base);
 	if (itr > 0)
-    	{
+	{
 		ft_putnbr_base(num / counter, base, digit_count, --itr);
 		(*digit_count)++;
-		//iterations--;
 		ft_putchar_fd((base[num % counter]), 1);
 	}
 	return ((*digit_count));
